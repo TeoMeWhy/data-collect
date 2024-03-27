@@ -15,15 +15,15 @@ def get_response(**kwargs):
 
 
 def save_data(data, option='json'):
-    now = datetime.datetime.now().strftime("%Y-%m-%d_%H:%M:%S.%f")
+    now = datetime.datetime.now().strftime("%Y%m%d_%H%M%S.%f")
     
     if option == 'json':
-        with open(f"data/contents/json/{now}.json", 'w') as open_file:
+        with open(f"/mnt/datalake/TabNews/contents/json/{now}.json", 'w') as open_file:
             json.dump(data, open_file, indent=4)
 
     elif option == 'parquet':
         df = pd.DataFrame(data)
-        df.to_parquet(f"data/contents/parquet/{now}.parquet", index=False)
+        df.to_parquet(f"/mnt/datalake/TabNews/contents/parquet/{now}.parquet", index=False)
 
 
 # %%
